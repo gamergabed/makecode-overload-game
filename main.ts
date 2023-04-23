@@ -1,7 +1,6 @@
 namespace SpriteKind {
     export const Bomb = SpriteKind.create()
 }
-let list: Image[] = []
 /**
  * Maps-
  * 
@@ -59,7 +58,7 @@ function createWorld (test: boolean) {
     } else {
         tiles.setCurrentTilemap(tileUtil.createSmallMap(tilemap`worldHive`))
     }
-    for (let value of list) {
+    for (let value of walls) {
         for (let for_pos of tiles.getTilesByType(value)) {
             tiles.setWallAt(for_pos, true)
         }
@@ -155,6 +154,17 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
             tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmB0`)
             tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), false)
         }
+        timer.after(5000, function () {
+            tiles.setTileAt(location, assets.tile`doorBlaster`)
+            tiles.setWallAt(location, true)
+            if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`dmB0`)) {
+                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`doorBlaster`)
+                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Top), true)
+            } else if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmB0`)) {
+                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`doorBlaster`)
+                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), true)
+            }
+        })
     } else if (tiles.tileAtLocationEquals(location, assets.tile`clawableBlock`) && sprites.readDataNumber(sprite, "type") == 2) {
         tiles.setTileAt(location, assets.tile`breakableBlock`)
     } else if (tiles.tileAtLocationEquals(location, assets.tile`doorClaw`) && sprites.readDataNumber(sprite, "type") == 2) {
@@ -167,6 +177,17 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
             tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmClaw`)
             tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), false)
         }
+        timer.after(5000, function () {
+            tiles.setTileAt(location, assets.tile`doorClaw`)
+            tiles.setWallAt(location, true)
+            if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`dmClaw`)) {
+                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`doorClaw`)
+                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Top), true)
+            } else if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmClaw`)) {
+                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`doorClaw`)
+                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), true)
+            }
+        })
     }
 })
 function createPlayer () {
@@ -237,12 +258,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let mySprite3: Sprite = null
 let mySprite4: Sprite = null
-let walls: Image[] = []
 let enemyTime = 0
 let bomb = false
 let debugMode = false
 let hard_mode = false
 let mySprite2: Sprite = null
+let walls: Image[] = []
 let speeedd = 0
 let projectile: Sprite = null
 let mySprite: Sprite = null
@@ -419,6 +440,12 @@ game.onUpdate(function () {
                     if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)) {
                         tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)
                         tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), false)
+                        timer.after(5000, function () {
+                            if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)) {
+                                tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)
+                                tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), true)
+                            }
+                        })
                     }
                 }
             }
