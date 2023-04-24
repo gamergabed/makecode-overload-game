@@ -15,6 +15,13 @@ namespace SpriteKind {
 /**
  * Protagonist= George
  */
+scene.onOverlapTile(SpriteKind.Player, assets.tile`doorBlaster`, function (sprite, location) {
+    if (characterAnimations.matchesRule(sprite, characterAnimations.rule(Predicate.FacingRight))) {
+        mySprite.x += 9
+    } else {
+        mySprite.x += -9
+    }
+})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (claw && controller.up.isPressed()) {
         music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.InBackground)
@@ -77,10 +84,10 @@ function createEnemy (_type: number) {
     tiles.placeOnRandomTile(mySprite2, assets.tile`myTile2`)
     mySprite2.y += -5
 }
-function initVars () {
+function initVars (debug: boolean) {
     hard_mode = game.ask("Hard mode?", "A=Sure, B=Nah")
     game2 = false
-    debugMode = true
+    debugMode = debug
     blaster = debugMode
     bomb = debugMode
     claw = debugMode
@@ -266,9 +273,9 @@ let mySprite2: Sprite = null
 let walls: Image[] = []
 let speeedd = 0
 let projectile: Sprite = null
-let mySprite: Sprite = null
 let blaster = false
 let claw = false
+let mySprite: Sprite = null
 let game2 = false
 game.setDialogCursor(assets.image`icon`)
 game.setDialogFrame(img`
@@ -412,8 +419,8 @@ scene.setBackgroundImage(img`
     ................................................................................................................................................................
     ................................................................................................................................................................
     `)
-initVars()
-createWorld(false)
+initVars(true)
+createWorld(true)
 game2 = true
 createPlayer()
 game.onUpdate(function () {
@@ -444,6 +451,7 @@ game.onUpdate(function () {
                             if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)) {
                                 tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)
                                 tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), true)
+                                sprites.destroy(value)
                             }
                         })
                     }
@@ -465,9 +473,6 @@ game.onUpdate(function () {
             )
             value.x += -7
             value.setKind(SpriteKind.Projectile)
-            timer.after(500, function () {
-                sprites.destroy(value)
-            })
         }
     }
     if (tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`Ladder`)) {
