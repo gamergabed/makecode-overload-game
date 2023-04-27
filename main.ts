@@ -162,15 +162,18 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
             tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), false)
         }
         timer.after(5000, function () {
-            tiles.setTileAt(location, assets.tile`doorBlaster`)
-            tiles.setWallAt(location, true)
-            if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`dmB0`)) {
-                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`doorBlaster`)
-                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Top), true)
-            } else if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmB0`)) {
-                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`doorBlaster`)
-                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), true)
-            }
+            timer.background(function () {
+                pauseUntil(() => tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`transparency8`))
+                tiles.setTileAt(location, assets.tile`doorBlaster`)
+                tiles.setWallAt(location, true)
+                if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`dmB0`)) {
+                    tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`doorBlaster`)
+                    tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Top), true)
+                } else if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmB0`)) {
+                    tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`doorBlaster`)
+                    tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), true)
+                }
+            })
         })
     } else if (tiles.tileAtLocationEquals(location, assets.tile`clawableBlock`) && sprites.readDataNumber(sprite, "type") == 2) {
         tiles.setTileAt(location, assets.tile`breakableBlock`)
@@ -185,15 +188,18 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
             tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), false)
         }
         timer.after(5000, function () {
-            tiles.setTileAt(location, assets.tile`doorClaw`)
-            tiles.setWallAt(location, true)
-            if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`dmClaw`)) {
-                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`doorClaw`)
-                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Top), true)
-            } else if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmClaw`)) {
-                tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`doorClaw`)
-                tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), true)
-            }
+            timer.background(function () {
+                pauseUntil(() => tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`transparency8`))
+                tiles.setTileAt(location, assets.tile`doorClaw`)
+                tiles.setWallAt(location, true)
+                if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`dmClaw`)) {
+                    tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Top), assets.tile`doorClaw`)
+                    tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Top), true)
+                } else if (tiles.tileAtLocationEquals(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`dmClaw`)) {
+                    tiles.setTileAt(location.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`doorClaw`)
+                    tiles.setWallAt(location.getNeighboringLocation(CollisionDirection.Bottom), true)
+                }
+            })
         })
     }
 })
@@ -448,11 +454,14 @@ game.onUpdate(function () {
                         tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)
                         tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), false)
                         timer.after(5000, function () {
-                            if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)) {
-                                tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)
-                                tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), true)
-                                sprites.destroy(value)
-                            }
+                            timer.background(function () {
+                                pauseUntil(() => tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`transparency8`))
+                                if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)) {
+                                    tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)
+                                    tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), true)
+                                    sprites.destroy(value)
+                                }
+                            })
                         })
                     }
                 }

@@ -85,8 +85,6 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile43 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile36 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
     export const tile44 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile45 = image.ofBuffer(hex``);
@@ -110,6 +108,8 @@ namespace myTiles {
     export const tile52 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile53 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile36 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -444,8 +444,6 @@ namespace myTiles {
             case "tile41":return tile41;
             case "teleHive0":
             case "tile43":return tile43;
-            case "objCharge":
-            case "tile36":return tile36;
             case "doorCharge":
             case "tile44":return tile44;
             case "alienWalkway0":
@@ -470,6 +468,8 @@ namespace myTiles {
             case "tile52":return tile52;
             case "tempMotherDie":
             case "tile53":return tile53;
+            case "objCharge":
+            case "tile36":return tile36;
         }
         return null;
     })

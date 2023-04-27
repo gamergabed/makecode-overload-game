@@ -249,12 +249,6 @@
         "tilemapTile": true,
         "displayName": "teleHive0"
     },
-    "tile36": {
-        "data": "hwQIAAgAAABAREQEJFJSQlRFVEIkVEVFVFRFQiRFVEUkJSVCQEREBA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "objCharge"
-    },
     "tile44": {
         "data": "hwQIAAgAAABERERERERERFVERFRVVVVVVVVVVUVERFVERERERERERA==",
         "mimeType": "image/x-mkcd-f4",
@@ -326,6 +320,12 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
         "displayName": "tempMotherDie"
+    },
+    "tile36": {
+        "data": "hwQIAAgAAABAREQEVFVVRVQlUkVUQiVFVFIkRVQlUkVUVVVFQEREBA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "objCharge"
     },
     "level2": {
         "id": "level2",
