@@ -133,6 +133,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objBomb`, function (sprite, l
     bomb = true
     tiles.setTileAt(location, assets.tile`transparency8`)
 })
+scene.onOverlapTile(SpriteKind.Projectile, assets.tile`alienRopeblock`, function (sprite, location) {
+	
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`objSpeed`, function (sprite, location) {
     music.stopAllSounds()
     music.play(music.stringPlayable("G A G F G B - B ", 200), music.PlaybackMode.UntilDone)
@@ -302,7 +305,7 @@ game.setDialogFrame(img`
     . . . . . . . . . . . . . . . 
     `)
 scene.setBackgroundImage(assets.image`Thing`)
-game.showLongText("", DialogLayout.Bottom)
+game.showLongText("Va0.4", DialogLayout.Bottom)
 scene.setBackgroundImage(img`
     ................................................................................................................................................................
     ................................................................................................................................................................
