@@ -107,7 +107,9 @@ function initVars (debug: boolean) {
     assets.tile`doorCharge`,
     assets.tile`breakableBlock`,
     assets.tile`bombableBlock0`,
-    assets.tile`clawableBlock`
+    assets.tile`clawableBlock`,
+    assets.tile`invTile`,
+    assets.tile`abBlaster`
     ]
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tempWin`, function (sprite, location) {
@@ -134,7 +136,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objBomb`, function (sprite, l
     tiles.setTileAt(location, assets.tile`transparency8`)
 })
 scene.onOverlapTile(SpriteKind.Projectile, assets.tile`alienRopeblock`, function (sprite, location) {
-	
+    if (true) {
+    	
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`objSpeed`, function (sprite, location) {
     music.stopAllSounds()
@@ -428,8 +432,8 @@ scene.setBackgroundImage(img`
     ................................................................................................................................................................
     ................................................................................................................................................................
     `)
-initVars(true)
-createWorld(true)
+initVars(false)
+createWorld(false)
 game2 = true
 createPlayer()
 game.onUpdate(function () {
