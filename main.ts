@@ -46,7 +46,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game2) {
-        if (mySprite.vy == 0) {
+        if (false) {
+            music.play(music.melodyPlayable(music.knock), music.PlaybackMode.InBackground)
+            mySprite.vy = -100
+        } else if (mySprite.vy == 0) {
             music.play(music.melodyPlayable(music.knock), music.PlaybackMode.InBackground)
             mySprite.vy = -100
         }
@@ -84,10 +87,11 @@ function createEnemy (_type: number) {
     tiles.placeOnRandomTile(mySprite2, assets.tile`myTile2`)
     mySprite2.y += -5
 }
-function initVars (debug: boolean) {
+function initVars (debug: boolean, inf_jump: boolean) {
     hard_mode = game.ask("Hard mode?", "A=Sure, B=Nah")
     game2 = false
     debugMode = debug
+    inf_jump = inf_jump
     blaster = debugMode
     bomb = debugMode
     claw = debugMode
@@ -136,8 +140,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objBomb`, function (sprite, l
     tiles.setTileAt(location, assets.tile`transparency8`)
 })
 scene.onOverlapTile(SpriteKind.Projectile, assets.tile`alienRopeblock`, function (sprite, location) {
-    if (true) {
-    	
+    if (sprites.readDataNumber(sprite, "type") == 2) {
+        mySprite.setPosition(sprite.x, sprite.y)
+        sprites.destroy(sprite)
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`objSpeed`, function (sprite, location) {
@@ -280,6 +285,7 @@ let mySprite3: Sprite = null
 let mySprite4: Sprite = null
 let enemyTime = 0
 let bomb = false
+let inf_jump = false
 let debugMode = false
 let hard_mode = false
 let mySprite2: Sprite = null
@@ -432,8 +438,8 @@ scene.setBackgroundImage(img`
     ................................................................................................................................................................
     ................................................................................................................................................................
     `)
-initVars(false)
-createWorld(false)
+initVars(true, true)
+createWorld(true)
 game2 = true
 createPlayer()
 game.onUpdate(function () {
@@ -495,6 +501,12 @@ game.onUpdate(function () {
         controller.moveSprite(mySprite, speeedd, speeedd)
     } else {
         controller.moveSprite(mySprite, speeedd, 0)
+    }
+})
+game.onUpdateInterval(2000, function () {
+    let list = 0
+    if (sprites.allOfKind(list).length < 15) {
+        createEnemy(1)
     }
 })
 forever(function () {
