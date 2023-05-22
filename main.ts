@@ -46,7 +46,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game2) {
-        if (false) {
+        if (true) {
             music.play(music.melodyPlayable(music.knock), music.PlaybackMode.InBackground)
             mySprite.vy = -100
         } else if (mySprite.vy == 0) {
@@ -72,6 +72,9 @@ function createWorld (test: boolean) {
         for (let for_pos of tiles.getTilesByType(value)) {
             tiles.setWallAt(for_pos, true)
         }
+    }
+    for (let index = 0; index < 15; index++) {
+        createEnemy(1)
     }
 }
 function createEnemy (_type: number) {
@@ -438,7 +441,7 @@ scene.setBackgroundImage(img`
     ................................................................................................................................................................
     ................................................................................................................................................................
     `)
-initVars(true, true)
+initVars(true, false)
 createWorld(true)
 game2 = true
 createPlayer()
@@ -495,18 +498,16 @@ game.onUpdate(function () {
             )
             value.x += -7
             value.setKind(SpriteKind.Projectile)
+            timer.background(function () {
+                pause(1000)
+                sprites.destroy(value)
+            })
         }
     }
     if (tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`Ladder`)) {
         controller.moveSprite(mySprite, speeedd, speeedd)
     } else {
         controller.moveSprite(mySprite, speeedd, 0)
-    }
-})
-game.onUpdateInterval(2000, function () {
-    let list = 0
-    if (sprites.allOfKind(list).length < 15) {
-        createEnemy(1)
     }
 })
 forever(function () {
