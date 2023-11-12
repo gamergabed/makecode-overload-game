@@ -151,25 +151,6 @@ cccccccccccccccccbbbfffffffffffffff888ffffffffffffbbbffffffccc888cccccccccbbbccc
 . . d d d d d d . 
 . . d d d d d d . 
 `;
-            case "image1":
-            case "PlayerArt":return img`
-. c c . c c . . c c . . 4 c 4 . 
-. 8 8 . b 8 . . b b . . b 8 . . 
-. b 4 . 4 b 4 . 4 b 4 . b b . . 
-d . d . d d . . d . d . d . d . 
-. . . . . . c c c c . . . . . . 
-. . . . . . c 8 8 6 . . . . . . 
-. . . . . . b b 8 8 . . . . . . 
-. . . . . . b b b b . . . . . . 
-. . . . . . c c c c . . . . . . 
-. . . 4 4 . c b b c . 4 2 2 c . 
-. . . 4 4 . c b b c . 4 4 4 c . 
-. . . . . . c b b c . . . . . . 
-. . . d d . c c c c . . . . . . 
-. . . d d . . . . . . . . . . . 
-. . . d . . . . . . d d . . . . 
-. . . . . . . . . . d d d . . . 
-`;
             case "image8":
             case "BombArt":return img`
 . . . . . . . . . . . . . . . . 
@@ -359,12 +340,18 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 `;
+            case "image12":
+            case "Claw":return img`
+c c b b c c 
+. c c c c . 
+c c b b c c 
+`;
             case "image9":
             case "FlyerArt":return img`
-. . . . c c . . c c . . 4 c 4 . 
-. c b . b 8 . . b b . . b 8 . . 
-c c 7 . 4 b 4 . 4 b 4 . b b . . 
-b b . . d d . . d . d . d . d . 
+. . . . c . . . . . . . . b c . 
+. c b . c c b . b b b . c c c . 
+c c 7 . b b 7 . c c 7 . b 7 . . 
+b b . . . . . . c . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . c c c . . . . . . . . . . 
 . . c c b c c c c . c . c c c c 
@@ -378,14 +365,24 @@ b b . . d d . . d . d . d . d .
 . . . . c c . . . c . . . . . . 
 . . . . . . . . . . c c . . . . 
 `;
-            case "image12":
-            case "Claw":return img`
-c c . . c c 
-. c d d c . 
-. b c c b . 
-. b c c b . 
-. c d d c . 
-c c . . c c 
+            case "image1":
+            case "PlayerArt":return img`
+. c c . c c . . . . . . 4 c 4 . 
+. b 8 . b 8 . . c c . . b 8 . . 
+4 b 4 . 4 b 4 . b 8 4 . b b . . 
+d d . . d d . . 4 d d . d . d . 
+. . . . . . c c c c . . . . . . 
+. . . . . . c 8 8 6 . . . . . . 
+. . . . . . b b 8 8 . . . . . . 
+. . . . . . b b b b . . . . . . 
+. . . . . . c c c c . . . . . . 
+. . . 4 4 . c b b c . 4 2 2 c . 
+. . . 4 4 . c b b c . 4 4 4 c . 
+. . . . . . c b b c . . . . . . 
+. . . d d . c c c c . . . . . . 
+. . . d d . . . . . . . . . . . 
+. . . d . . . . . . d d . . . . 
+. . . . . . . . . . d d d . . . 
 `;
         }
         return null;
@@ -1312,6 +1309,36 @@ b b b 8 8 8 . . . .
 d d d d d d . . . . 
 d d d d d d . . . . 
 d d d d d d . . . . 
+`];
+            case "PslideR":
+            case "anim12":return [img`
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+c c c c c c . . . 
+c c c c c c . . . 
+c c c c c c 4 4 c 
+b b b 8 8 8 4 4 c 
+b b b 8 8 8 4 4 c 
+b b b 8 8 8 d d d 
+4 4 4 d d d d d d 
+4 4 4 d d d d d d 
+`];
+            case "PslideL":
+            case "anim13":return [img`
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+. . . c c c c c c 
+. . . c c c c c c 
+c 4 4 c c c c c c 
+c 4 4 8 8 8 b b b 
+c 4 4 8 8 8 b b b 
+d d d 8 8 8 b b b 
+d d d d d d 4 4 4 
+d d d d d d 4 4 4 
 `];
         }
         return null;

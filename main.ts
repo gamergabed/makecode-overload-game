@@ -1,6 +1,10 @@
 namespace SpriteKind {
     export const Bomb = SpriteKind.create()
+    export const StatusBar = SpriteKind.create()
 }
+/**
+ * World Record: 52.05 Test map
+ */
 /**
  * Maps-
  * 
@@ -46,10 +50,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game2) {
-        if (true) {
-            music.play(music.melodyPlayable(music.knock), music.PlaybackMode.InBackground)
-            mySprite.vy = -100
-        } else if (mySprite.vy == 0) {
+        if (mySprite.vy == 0) {
             music.play(music.melodyPlayable(music.knock), music.PlaybackMode.InBackground)
             mySprite.vy = -100
         }
@@ -72,9 +73,6 @@ function createWorld (test: boolean) {
         for (let for_pos of tiles.getTilesByType(value)) {
             tiles.setWallAt(for_pos, true)
         }
-    }
-    for (let index = 0; index < 15; index++) {
-        createEnemy(1)
     }
 }
 function createEnemy (_type: number) {
@@ -441,7 +439,7 @@ scene.setBackgroundImage(img`
     ................................................................................................................................................................
     ................................................................................................................................................................
     `)
-initVars(true, false)
+initVars(false, false)
 createWorld(true)
 game2 = true
 createPlayer()
