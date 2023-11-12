@@ -340,12 +340,6 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 `;
-            case "image12":
-            case "Claw":return img`
-c c b b c c 
-. c c c c . 
-c c b b c c 
-`;
             case "image9":
             case "FlyerArt":return img`
 . . . . c . . . . . . . . b c . 
@@ -383,6 +377,12 @@ d d . . d d . . 4 d d . d . d .
 . . . d d . . . . . . . . . . . 
 . . . d . . . . . . d d . . . . 
 . . . . . . . . . . d d d . . . 
+`;
+            case "image12":
+            case "Claw":return img`
+c c b b c c 
+. c 3 3 c . 
+c c b b c c 
 `;
         }
         return null;

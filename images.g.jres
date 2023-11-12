@@ -44,11 +44,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Thing"
     },
-    "image12": {
-        "data": "hwQGAAMAAAAMDAAAzAwAAMsLAADLCwAAzAwAAAwMAAA=",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Claw"
-    },
     "image9": {
         "data": "hwQQABAAAAAAvAAAAAAAAMC8AAAAAAAAsAcAzMwMAAAAAMC83cwAAMwLwNu7zQwMwAvA3Nu9DAywBwC8vdvNAAAAAMzbzQwAsMwAfNzczACwDABwzLzbDLAHAHy828zAAAAAwNu9DMDACwDMvdsMAMsHANzbywwAzAAAvL3MAAAAAADMzAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -58,6 +53,11 @@
         "data": "hwQQABAAAAAA1AAAAAAAALzbAAAAAAAAjAQAAAAAAAAAAAAAQATdDbzUAABABN0AjNsAAAAAAAAABMy7zMwMAAAAjLu8uwwAwEuMuLy7DADA2Gy4zMwMAADUAAAAAADdAAAAAEAEAN202wAAIAQA0IwLAAAgBAAABNAAAMAMAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "PlayerArt"
+    },
+    "image12": {
+        "data": "hwQGAAMAAAAMDAAAzAwAADsLAAA7CwAAzAwAAAwMAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Claw"
     },
     "anim6": {
         "namespace": "myAnimations",

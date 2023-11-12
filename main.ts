@@ -16,9 +16,7 @@ namespace SpriteKind {
  * 
  * The Hive
  */
-/**
- * Protagonist= George
- */
+// Protagonist= George
 scene.onOverlapTile(SpriteKind.Player, assets.tile`doorBlaster`, function (sprite, location) {
     if (characterAnimations.matchesRule(sprite, characterAnimations.rule(Predicate.FacingRight))) {
         mySprite.x += 9
@@ -111,7 +109,7 @@ function initVars (debug: boolean, inf_jump: boolean) {
     assets.tile`doorClaw`,
     assets.tile`doorCharge`,
     assets.tile`breakableBlock`,
-    assets.tile`bombableBlock0`,
+    assets.tile`bombableBlock`,
     assets.tile`clawableBlock`,
     assets.tile`invTile`,
     assets.tile`abBlaster`
@@ -445,35 +443,35 @@ game2 = true
 createPlayer()
 game.onUpdate(function () {
     scene.centerCameraAt(mySprite.x, mySprite.y - 15)
-    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
-        value.ay = 150
-        value.setVelocity((mySprite.x - value.x) * sprites.readDataNumber(value, "speed"), value.ay)
+    for (let value2 of sprites.allOfKind(SpriteKind.Enemy)) {
+        value2.ay = 150
+        value2.setVelocity((mySprite.x - value2.x) * sprites.readDataNumber(value2, "speed"), value2.ay)
     }
-    for (let value of tiles.getTilesByType(assets.tile`onewayFloor`)) {
-        if (mySprite.y < value.y) {
-            tiles.setWallAt(value, true)
+    for (let value3 of tiles.getTilesByType(assets.tile`onewayFloor`)) {
+        if (mySprite.y < value3.y) {
+            tiles.setWallAt(value3, true)
         } else {
-            tiles.setWallAt(value, false)
+            tiles.setWallAt(value3, false)
         }
     }
-    for (let value of sprites.allOfKind(SpriteKind.Projectile)) {
+    for (let value4 of sprites.allOfKind(SpriteKind.Projectile)) {
         for (let col = 0; col <= 2; col++) {
             for (let row = 0; row <= 2; row++) {
-                if (sprites.readDataNumber(value, "type") == 1) {
-                    if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`bombableBlock0`)) {
-                        tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`transparency8`)
-                        tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), false)
+                if (sprites.readDataNumber(value4, "type") == 1) {
+                    if (tiles.tileAtLocationEquals(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), assets.tile`bombableBlock`)) {
+                        tiles.setTileAt(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), assets.tile`transparency8`)
+                        tiles.setWallAt(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), false)
                     }
-                    if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)) {
-                        tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)
-                        tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), false)
+                    if (tiles.tileAtLocationEquals(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)) {
+                        tiles.setTileAt(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)
+                        tiles.setWallAt(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), false)
                         timer.after(5000, function () {
                             timer.background(function () {
                                 pauseUntil(() => tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`transparency8`))
-                                if (tiles.tileAtLocationEquals(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)) {
-                                    tiles.setTileAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)
-                                    tiles.setWallAt(tiles.getTileLocation(value.tilemapLocation().column + (col - 1), value.tilemapLocation().row + (row - 1)), true)
-                                    sprites.destroy(value)
+                                if (tiles.tileAtLocationEquals(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), assets.tile`dmBomb0`)) {
+                                    tiles.setTileAt(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), assets.tile`doorBomb`)
+                                    tiles.setWallAt(tiles.getTileLocation(value4.tilemapLocation().column + (col - 1), value4.tilemapLocation().row + (row - 1)), true)
+                                    sprites.destroy(value4)
                                 }
                             })
                         })
@@ -482,23 +480,23 @@ game.onUpdate(function () {
             }
         }
     }
-    for (let value of sprites.allOfKind(SpriteKind.Bomb)) {
-        sprites.changeDataNumberBy(value, "time", -1)
-        if (sprites.readDataNumber(value, "time") == 0) {
-            value.setFlag(SpriteFlag.Ghost, true)
-            value.ay = 0
-            value.y += -7
+    for (let value5 of sprites.allOfKind(SpriteKind.Bomb)) {
+        sprites.changeDataNumberBy(value5, "time", -1)
+        if (sprites.readDataNumber(value5, "time") == 0) {
+            value5.setFlag(SpriteFlag.Ghost, true)
+            value5.ay = 0
+            value5.y += -7
             animation.runImageAnimation(
-            value,
+            value5,
             assets.animation`Boom`,
             100,
             false
             )
-            value.x += -7
-            value.setKind(SpriteKind.Projectile)
+            value5.x += -7
+            value5.setKind(SpriteKind.Projectile)
             timer.background(function () {
                 pause(1000)
-                sprites.destroy(value)
+                sprites.destroy(value5)
             })
         }
     }
