@@ -1,4 +1,4 @@
-namespace SpriteKind {
+ namespace SpriteKind {
     export const Bomb = SpriteKind.create()
     export const StatusBar = SpriteKind.create()
 }
@@ -132,7 +132,7 @@ function createEnemy (_type: number) {
     true
     )
     tiles.placeOnRandomTile(mySprite2, assets.tile`myTile2`)
-    mySprite2.y += -5
+    mySprite2.y += -12
     EnemyCount += 1
 }
 function initVars (debug: boolean, inf_jump: boolean) {
@@ -338,13 +338,21 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         sprite.setVelocity(75, -75)
     }
     
-    sprite.setFlag(SpriteFlag.Ghost, true)
+    sprite.setFlag(SpriteFlag.GhostThroughSprites, true)
     timer.after(1000, function() {
-        sprite.setFlag(SpriteFlag.Ghost, false)
+        sprite.setFlag(SpriteFlag.GhostThroughSprites, false)
     })
     if (sprites.readDataNumber(otherSprite, "type") == 0) {
     	
     }
+})
+info.onLifeZero(function() {
+    let game2 = false
+    sprites.destroy(mySprite, effects.fire, 500)
+    music.play(music.stringPlayable("E F D E C D B C", 500), music.PlaybackMode.InBackground)
+    timer.after(500, function() {
+            game.gameOver(false)
+    })
 })
 let mySprite4: Sprite = null
 let enemyTime = 0

@@ -1,9 +1,4 @@
 {
-    "image2": {
-        "data": "hwQBAAEAAAADAAAA",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Temp"
-    },
     "image3": {
         "data": "hwQGAAMAAABVBQAAVQUAAFUFAABVBQAAVQUAAFUFAAA=",
         "mimeType": "image/x-mkcd-f4",
@@ -73,6 +68,21 @@
         "data": "hwQGAAYAAABARAQAVCJFACRVQgAkVUIAVCJFAEBEBAA=",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "enemyBlast"
+    },
+    "image2": {
+        "data": "hwQJAAwAAAD///////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Temp"
+    },
+    "image15": {
+        "data": "hwQIAAgAAAAAwAwAALu1AAC7tQAAW7UAAFu1AABbuwAAW7sAALzLAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "health"
+    },
+    "image16": {
+        "data": "hwQIAAgAAAAAAAAA4O7uDkDETA5AfM0OQNzHDkDETA5AREQOAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bombPack"
     },
     "anim6": {
         "namespace": "myAnimations",

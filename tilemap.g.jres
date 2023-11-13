@@ -381,11 +381,29 @@
         "tilemapTile": true,
         "displayName": "spawnPoint"
     },
-    "tile55": {
-        "data": "hwQIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "tile64": {
+        "data": "hwQIAAgAAACgqqoKOjMzozozO6M6PLujOsw7ozo8M6M6MzOjoKqqCg==",
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
-        "displayName": "obj"
+        "displayName": "objSpikes"
+    },
+    "tile65": {
+        "data": "hwQIAAgAAACgqqoKOjMzozq7u6M6i7ajOmu4ozq7u6M6MzOjoKqqCg==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "objCooling"
+    },
+    "tile55": {
+        "data": "hwQIAAgAAAAgJCQkIiQkJCAkJCQiJCQkICQkJCIkJCQgJCQkIiQkJA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "lavaTOP"
+    },
+    "tile66": {
+        "data": "hwQIAAgAAAAkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "lavaBOTTOM"
     },
     "level2": {
         "id": "level2",

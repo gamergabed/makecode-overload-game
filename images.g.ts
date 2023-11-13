@@ -3,10 +3,6 @@ namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
-            case "image2":
-            case "Temp":return img`
-3 
-`;
             case "image3":
             case "beam":return img`
 5 5 5 5 5 5 
@@ -524,6 +520,43 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 4 2 5 5 2 4 
 4 5 2 2 5 4 
 . 4 4 4 4 . 
+`;
+            case "image2":
+            case "Temp":return img`
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+f f f f f f f f f 
+`;
+            case "image15":
+            case "health":return img`
+. . . . . . . . 
+. . . . . . . . 
+. b b b b b b c 
+c b b 5 5 5 5 b 
+c 5 5 5 5 b b b 
+. b b b b b b c 
+. . . . . . . . 
+. . . . . . . . 
+`;
+            case "image16":
+            case "bombPack":return img`
+. . . . . . . . 
+. e 4 4 4 4 4 . 
+. e 4 c c 4 4 . 
+. e c 7 d c 4 . 
+. e c d 7 c 4 . 
+. e 4 c c 4 4 . 
+. e e e e e e . 
+. . . . . . . . 
 `;
         }
         return null;

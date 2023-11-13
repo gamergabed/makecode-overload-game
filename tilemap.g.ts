@@ -129,7 +129,13 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile7 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
+    export const tile64 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile65 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
     export const tile55 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile66 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -558,8 +564,14 @@ namespace myTiles {
             case "tile63":return tile63;
             case "spawnPoint":
             case "tile7":return tile7;
-            case "obj":
+            case "objSpikes":
+            case "tile64":return tile64;
+            case "objCooling":
+            case "tile65":return tile65;
+            case "lavaTOP":
             case "tile55":return tile55;
+            case "lavaBOTTOM":
+            case "tile66":return tile66;
         }
         return null;
     })
