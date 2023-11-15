@@ -322,7 +322,7 @@ function createPlayer () {
     )
     tiles.placeOnRandomTile(mySprite, assets.tile`spawnPoint`)
     mySprite.y += -32
-    mySprite.ay = 150
+    mySprite.ay = gravity
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(sprite)
@@ -354,6 +354,7 @@ info.onLifeZero(function() {
             game.gameOver(false)
     })
 })
+let gravity = 150
 let mySprite4: Sprite = null
 let enemyTime = 0
 let bomb = false
@@ -376,8 +377,8 @@ game.setDialogFrame(assets.image`emtey`)
 scene.setBackgroundImage(assets.image`Thing`)
 game.showLongText("By OMINOUSWOLF", DialogLayout.Bottom)
 scene.setBackgroundImage(assets.image`gameBakgrond`)
-initVars(false, false)
-createWorld(true)
+initVars(true, false)
+createWorld(game.ask("World Please", "A=Debug!"))
 createPlayer()
 game2 = true
 game.onUpdate(function () {
