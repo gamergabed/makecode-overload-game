@@ -132,21 +132,6 @@ cccccccccccccccccbbbbbbffffffffffff888ffffffffffffbbbbfffffcc8888cccccccccbbbccc
 cccccccccccccccccbbbbffffffffffffff888ffffffffffffbbbbfffffccc888cccccccccbbbcccccccc8888cccccccccc66666bbbbbb66666666888fffffffffbbbbbbffffcccccccccccccccccccc
 cccccccccccccccccbbbfffffffffffffff888ffffffffffffbbbffffffccc888cccccccccbbbccccccccc888cccccccccc66666bbbbb666666666888ffffffffffbbbbbffffcccccccccccccccccccc
 `;
-            case "image6":
-            case "Player":return img`
-. . c c c c c c . 
-. . c c c c c c . 
-. . c c c c c c . 
-. . 8 8 8 6 8 8 . 
-. . 8 8 8 8 6 8 . 
-. . 8 8 8 8 8 8 . 
-. 4 4 4 b b 4 c 4 
-. 4 4 4 b b 4 c 4 
-. 4 4 4 b b 4 c 4 
-. . d d d d d d . 
-. . d d d d d d . 
-. . d d d d d d . 
-`;
             case "image8":
             case "BombArt":return img`
 . . . . . . . . . . . . . . . . 
@@ -556,6 +541,32 @@ c 5 5 5 5 b b b
 . e c d 7 c 4 . 
 . e 4 c c 4 4 . 
 . e e e e e e . 
+. . . . . . . . 
+`;
+            case "image6":
+            case "Player":return img`
+. . c c c c c c . 
+. . c c c c c c . 
+. . c c c c c c . 
+. . 8 8 8 8 8 8 . 
+. . 8 8 8 8 8 8 . 
+. . 8 8 8 8 8 8 . 
+. 4 4 4 b b 4 c 4 
+. 4 4 4 b b 4 c 4 
+. 4 4 4 b b 4 c 4 
+. . d d d d d d . 
+. . d d d d d d . 
+. . d d d d d d . 
+`;
+            case "image17":
+            case "hp":return img`
+. . . . . . . . 
+. . . . . . . . 
+4 . . . 5 . 4 . 
+. 4 . 5 . 5 . 4 
+5 . 5 . 4 . 5 . 
+. 5 . 4 . . . 5 
+. . . . . . . . 
 . . . . . . . . 
 `;
         }

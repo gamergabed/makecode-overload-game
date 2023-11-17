@@ -9,11 +9,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "background"
     },
-    "image6": {
-        "data": "hwQJAAwAAAAAAAAAAAAAAAAAAEQEAAAAzIyIRNTdAADMjIhE1N0AAMyMiLvb3QAAzGyIu9vdAADMjIZE1N0AAMyMiMzc3QAAAAAARAQAAAA=",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Player"
-    },
     "image8": {
         "data": "hwQQABAAAABwvAAAAAAAAHDXAAAAAAALcLwAAAAAsAsAAADHzMy7C8DccHfMzLwAwLdwd8fMDADA3HB3d8zdDQAAcHd3zNzdwLxwd3fM3Q3A3HB3x8wMAMC8cHfMzLwAAAAAx8zMu7tw3AAAAACwC3C8AAAAAAAAcNwAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -83,6 +78,16 @@
         "data": "hwQIAAgAAAAAAAAA4O7uDkDETA5AfM0OQNzHDkDETA5AREQOAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "bombPack"
+    },
+    "image6": {
+        "data": "hwQJAAwAAAAAAAAAAAAAAAAAAEQEAAAAzIyIRNTdAADMjIhE1N0AAMyMiLvb3QAAzIyIu9vdAADMjIhE1N0AAMyMiMzc3QAAAAAARAQAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Player"
+    },
+    "image17": {
+        "data": "hwQIAAgAAAAABAUAAEBQAAAABQAAUEAAAAUEAABQAAAABAUAAEBQAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "hp"
     },
     "anim6": {
         "namespace": "myAnimations",

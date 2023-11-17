@@ -1,4 +1,4 @@
- namespace SpriteKind {
+  namespace SpriteKind {
     export const Bomb = SpriteKind.create()
     export const StatusBar = SpriteKind.create()
 }
@@ -47,7 +47,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (game2) {
+    if (game22) {
         if (mySprite.vy == 0 || inf_jump) {
             music.play(music.melodyPlayable(music.knock), music.PlaybackMode.InBackground)
             mySprite.vy = -100
@@ -131,7 +131,7 @@ function createEnemy (_type: number) {
     200,
     true
     )
-    tiles.placeOnRandomTile(mySprite2, assets.tile`myTile2`)
+    tiles.placeOnRandomTile(mySprite2, assets.tile`spawner`)
     mySprite2.y += -12
     EnemyCount += 1
 }
@@ -139,8 +139,8 @@ function initVars (debug: boolean, inf_jump: boolean) {
     info.setLife(5)
     hard_mode = game.ask("Hard mode?", "A=Sure, B=Nah")
     EnemyCount = 0
-    EnemyMAX = 20
-    game2 = false
+    EnemyMAX = 7
+    game22 = false
     debugMode = debug
     inf_jump = inf_jump
     blaster = debugMode
@@ -192,6 +192,13 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objBomb`, function (sprite, l
     game.splash("You got the Bomb!", "Press Down to drop a Bomb!")
     bomb = true
     tiles.setTileAt(location, assets.tile`transparency8`)
+})
+info.onLifeZero(function () {
+    sprites.destroy(mySprite, effects.fire, 500)
+    music.play(music.stringPlayable("E F D E C D B C ", 500), music.PlaybackMode.InBackground)
+    timer.after(500, function () {
+        game.gameOver(false)
+    })
 })
 scene.onOverlapTile(SpriteKind.Projectile, assets.tile`alienRopeblock`, function (sprite, location) {
     if (sprites.readDataNumber(sprite, "type") == 2) {
@@ -325,7 +332,9 @@ function createPlayer () {
     mySprite.ay = gravity
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    sprites.destroy(sprite)
+    if (sprites.readDataNumber(sprite, "type") != 1) {
+        sprites.destroy(sprite)
+    }
     sprites.destroy(otherSprite, effects.fire, 500)
     music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.InBackground)
     EnemyCount += -1
@@ -337,24 +346,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     } else {
         sprite.setVelocity(75, -75)
     }
-    
     sprite.setFlag(SpriteFlag.GhostThroughSprites, true)
-    timer.after(1000, function() {
+    timer.after(1000, function () {
         sprite.setFlag(SpriteFlag.GhostThroughSprites, false)
     })
     if (sprites.readDataNumber(otherSprite, "type") == 0) {
     	
     }
 })
-info.onLifeZero(function() {
-    let game2 = false
-    sprites.destroy(mySprite, effects.fire, 500)
-    music.play(music.stringPlayable("E F D E C D B C", 500), music.PlaybackMode.InBackground)
-    timer.after(500, function() {
-            game.gameOver(false)
-    })
-})
-let gravity = 150
 let mySprite4: Sprite = null
 let enemyTime = 0
 let bomb = false
@@ -370,24 +369,27 @@ let projectile: Sprite = null
 let blaster = false
 let claw = false
 let mySprite: Sprite = null
+let game22 = false
+let gravity = 0
 let game2 = false
+gravity = 150
 game.setDialogCursor(assets.image`icon`)
 game.setDialogTextColor(13)
 game.setDialogFrame(assets.image`emtey`)
 scene.setBackgroundImage(assets.image`Thing`)
 game.showLongText("By OMINOUSWOLF", DialogLayout.Bottom)
 scene.setBackgroundImage(assets.image`gameBakgrond`)
-initVars(true, false)
+initVars(false, false)
 createWorld(game.ask("World Please", "A=Debug!"))
 createPlayer()
-game2 = true
+game22 = true
 game.onUpdate(function () {
     scene.centerCameraAt(mySprite.x, mySprite.y - 15)
     for (let value2 of sprites.allOfKind(SpriteKind.Enemy)) {
         value2.ay = 150
         value2.setVelocity((mySprite.x - value2.x) * sprites.readDataNumber(value2, "speed"), value2.ay)
-        if (scene.cameraProperty(CameraProperty.Y) - value2.y > 120 || scene.cameraProperty(CameraProperty.X) - value2.x > 160) {
-            sprites.destroy(value2, effects.spray, 1)
+        if (mySprite.y - value2.y > 60 || mySprite.x - value2.x > 80) {
+            sprites.destroy(value2)
             EnemyCount += -1
         }
     }
