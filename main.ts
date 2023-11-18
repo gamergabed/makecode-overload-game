@@ -374,9 +374,9 @@ let gravity = 0
 let game2 = false
 gravity = 150
 game.setDialogCursor(assets.image`icon`)
-game.setDialogTextColor(13)
+game.setDialogTextColor(1)
 game.setDialogFrame(assets.image`emtey`)
-scene.setBackgroundImage(assets.image`Thing`)
+scene.setBackgroundImage(assets.image`Thing2`)
 game.showLongText("By OMINOUSWOLF", DialogLayout.Bottom)
 scene.setBackgroundImage(assets.image`gameBakgrond`)
 initVars(false, false)
@@ -387,8 +387,8 @@ game.onUpdate(function () {
     scene.centerCameraAt(mySprite.x, mySprite.y - 15)
     for (let value2 of sprites.allOfKind(SpriteKind.Enemy)) {
         value2.ay = 150
-        value2.setVelocity((mySprite.x - value2.x) * sprites.readDataNumber(value2, "speed"), value2.ay)
-        if (mySprite.y - value2.y > 60 || mySprite.x - value2.x > 80) {
+        value2.setVelocity((mySprite.x - value2.x) * sprites.readDataNumber(value2, "speed"), value2.ay);
+        if (Math.abs(mySprite.y - value2.y) > 60 || Math.abs(mySprite.x - value2.x) > 80) {
             sprites.destroy(value2)
             EnemyCount += -1
         }
