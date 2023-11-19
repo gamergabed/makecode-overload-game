@@ -113,7 +113,7 @@ function createWorld (test: boolean) {
     if (test) {
         tiles.setCurrentTilemap(tileUtil.createSmallMap(tilemap`worldTest`))
     } else {
-        tiles.setCurrentTilemap(tileUtil.createSmallMap(tilemap`worldHive`))
+        tiles.setCurrentTilemap(tileUtil.createSmallMap(tilemap`realMap`))
     }
     for (let value of walls) {
         for (let for_pos of tiles.getTilesByType(value)) {
@@ -140,6 +140,7 @@ function initVars (debug: boolean, inf_jump: boolean) {
     hard_mode = game.ask("Hard mode?", "A=Sure, B=Nah")
     EnemyCount = 0
     EnemyMAX = 7
+    HealthMAX = 5
     game22 = false
     debugMode = debug
     inf_jump = inf_jump
@@ -148,6 +149,7 @@ function initVars (debug: boolean, inf_jump: boolean) {
     claw = debugMode
     enemyTime = 0
     speeedd = 100
+    gravity = 150
     walls = [
     assets.tile`alienBlue0`,
     assets.tile`alienRed`,
@@ -372,7 +374,7 @@ let mySprite: Sprite = null
 let game22 = false
 let gravity = 0
 let game2 = false
-gravity = 150
+let HealthMAX = 0
 game.setDialogCursor(assets.image`icon`)
 game.setDialogTextColor(1)
 game.setDialogFrame(assets.image`emtey`)
@@ -401,7 +403,7 @@ game.onUpdate(function () {
         }
     }
     if (tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`Ladder`)) {
-        controller.moveSprite(mySprite, speeedd, speeedd)
+        controller.moveSprite(mySprite, speeedd, speeedd*1.5)
     } else {
         controller.moveSprite(mySprite, speeedd, 0)
     }
