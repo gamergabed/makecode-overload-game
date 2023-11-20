@@ -222,6 +222,17 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objClaw`, function (sprite, l
     claw = true
     tiles.setTileAt(location, assets.tile`transparency8`)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`objHealth`, function (sprite, location) {
+    music.stopAllSounds()
+    music.play(music.stringPlayable("G A G F G B - B ", 200), music.PlaybackMode.UntilDone)
+    game.splash("You got more Health!", "You can take 5 more hits!")
+    HealthMAX += 5
+    info.setLife(HealthMAX)
+    tiles.setTileAt(location, assets.tile`transparency8`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Lava`, function (sprite, location) {
+    info.changeLifeBy(-1)
+})
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     if (tiles.tileAtLocationEquals(location, assets.tile`breakableBlock`) && sprites.readDataNumber(sprite, "type") == 0) {
         tiles.setTileAt(location, assets.tile`transparency8`)
