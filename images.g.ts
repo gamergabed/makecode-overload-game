@@ -1453,6 +1453,94 @@ d d d d d d . . . .
 d d d d d d . . . . 
 d d d d d d . . . . 
 `];
+            case "alienBatHL":
+            case "anim15":return [img`
+. . . b b b c c c 
+. . . b b b c c c 
+. . . b b b c c c 
+c c c c c c c c c 
+c c c c c c c c c 
+c c c c c c c c c 
+. . . 7 7 7 b b b 
+. . . 7 7 7 b b b 
+. . . 7 7 7 b b b 
+`];
+            case "alienBatHR":
+            case "anim14":return [img`
+c c c b b b . . . 
+c c c b b b . . . 
+c c c b b b . . . 
+c c c c c c c c c 
+c c c c c c c c c 
+c c c c c c c c c 
+b b b 7 7 7 . . . 
+b b b 7 7 7 . . . 
+b b b 7 7 7 . . . 
+`];
+            case "alienBatFR":
+            case "anim16":return [img`
+c c c . . . . . . 
+c c c . . . . . . 
+c c c . . . . . . 
+c c c c c c b b b 
+c c c c c c b b b 
+c c c c c c b b b 
+b b b b b b 7 7 7 
+b b b b b b 7 7 7 
+b b b b b b 7 7 7 
+`, img`
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+c c c c c c b b b 
+c c c c c c b b b 
+c c c c c c b b b 
+b b b b b b 7 7 7 
+b b b b b b 7 7 7 
+b b b b b b 7 7 7 
+`, img`
+c c c c c c b b b 
+c c c c c c b b b 
+c c c c c c b b b 
+c c c b b b 7 7 7 
+c c c b b b 7 7 7 
+c c c b b b 7 7 7 
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+`];
+            case "alienBatFL":
+            case "anim17":return [img`
+. . . . . . c c c 
+. . . . . . c c c 
+. . . . . . c c c 
+b b b c c c c c c 
+b b b c c c c c c 
+b b b c c c c c c 
+7 7 7 b b b b b b 
+7 7 7 b b b b b b 
+7 7 7 b b b b b b 
+`, img`
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+b b b c c c c c c 
+b b b c c c c c c 
+b b b c c c c c c 
+7 7 7 b b b b b b 
+7 7 7 b b b b b b 
+7 7 7 b b b b b b 
+`, img`
+b b b c c c c c c 
+b b b c c c c c c 
+b b b c c c c c c 
+7 7 7 b b b c c c 
+7 7 7 b b b c c c 
+7 7 7 b b b c c c 
+. . . . . . . . . 
+. . . . . . . . . 
+. . . . . . . . . 
+`];
         }
         return null;
     })
