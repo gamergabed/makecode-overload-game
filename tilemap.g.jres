@@ -237,12 +237,6 @@
         "tilemapTile": true,
         "displayName": "tempMotherAlien"
     },
-    "tile1": {
-        "data": "hwQIAAgAAABmhmaGiIiIhoZmhmaGiIiIZoZmhoiGiIiIZoZmiIiIiA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "alienBlue0"
-    },
     "tile56": {
         "data": "hwQIAAgAAAD//////////////////////////////////////////w==",
         "mimeType": "image/x-mkcd-f4",
@@ -441,12 +435,6 @@
         "tilemapTile": true,
         "displayName": "alienCornerB"
     },
-    "tile73": {
-        "data": "hwQIAAgAAADLh3m8y5d2vMuXeLzLZ3m8y4d5vMuXdrzLl3i8y2d5vA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "alienSideB0"
-    },
     "tile75": {
         "data": "hwQIAAgAAAC7u7u7zMzMzHd3d3eWiZaJiZaJlnd3d3fMzMzMu7u7uw==",
         "mimeType": "image/x-mkcd-f4",
@@ -458,6 +446,24 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
         "displayName": "chargeBlock"
+    },
+    "tile76": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "tile0"
+    },
+    "tile1": {
+        "data": "hwQIAAgAAABmhmaGiIiIhoZmhmaGiIiIZoZmhoiGiIiIZoZmiIiIiA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "alienBlue"
+    },
+    "tile73": {
+        "data": "hwQIAAgAAADLh3m8y5d2vMuXeLzLZ3m8y4d5vMuXdrzLl3i8y2d5vA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "alienSideB"
     },
     "level2": {
         "id": "level2",

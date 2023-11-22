@@ -81,8 +81,6 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile53 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile1 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
     export const tile56 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile58 = image.ofBuffer(hex``);
@@ -149,11 +147,15 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile72 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile73 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
     export const tile75 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile74 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile76 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile1 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile73 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -765,8 +767,6 @@ namespace myTiles {
             case "tile36":return tile36;
             case "tempMotherAlien":
             case "tile53":return tile53;
-            case "alienBlue0":
-            case "tile1":return tile1;
             case "invTile":
             case "tile56":return tile56;
             case "objSlide":
@@ -833,12 +833,16 @@ namespace myTiles {
             case "tile48":return tile48;
             case "alienCornerB":
             case "tile72":return tile72;
-            case "alienSideB0":
-            case "tile73":return tile73;
             case "alienWallB":
             case "tile75":return tile75;
             case "chargeBlock":
             case "tile74":return tile74;
+            case "tile0":
+            case "tile76":return tile76;
+            case "alienBlue":
+            case "tile1":return tile1;
+            case "alienSideB":
+            case "tile73":return tile73;
         }
         return null;
     })

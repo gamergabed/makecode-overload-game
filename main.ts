@@ -136,11 +136,11 @@ function createEnemy (_type: number) {
     EnemyCount += 1
 }
 function initVars (debug: boolean, inf_jump: boolean) {
-    info.setLife(5)
+    HealthMAX = 5
+    info.setLife(HealthMAX)
     hard_mode = game.ask("Hard mode?", "A=Sure, B=Nah")
     EnemyCount = 0
     EnemyMAX = 7
-    HealthMAX = 5
     game22 = false
     debugMode = debug
     inf_jump = inf_jump
@@ -151,7 +151,7 @@ function initVars (debug: boolean, inf_jump: boolean) {
     speeedd = 100
     gravity = 150
     walls = [
-    assets.tile`alienBlue0`,
+    assets.tile`alienBlue`,
     assets.tile`alienRed`,
     assets.tile`alienLeaves`,
     assets.tile`alienGreen`,
@@ -169,6 +169,12 @@ function initVars (debug: boolean, inf_jump: boolean) {
     assets.tile`bombableBlock`,
     assets.tile`clawableBlock`,
     assets.tile`invTile`,
+    assets.tile`alienWall`,
+    assets.tile`alienSide`,
+    assets.tile`alienCorner`,
+    assets.tile`alienWallB`,
+    assets.tile`alienSideB`,
+    assets.tile`alienCornerB`,
     ]
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tempWin`, function (sprite, location) {
@@ -222,6 +228,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objClaw`, function (sprite, l
     music.play(music.stringPlayable("G A G F G B - B ", 200), music.PlaybackMode.UntilDone)
     game.splash("You got the Claw!", "Press B and Up to Launch!")
     claw = true
+    tiles.setTileAt(location, assets.tile`transparency8`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`objHealth`, function (sprite, location) {
+    music.stopAllSounds()
+    music.play(music.stringPlayable("G A G F G B - B ", 200), music.PlaybackMode.UntilDone)
+    game.splash("You got more Health!", "You can take 5 more hits!")
+    HealthMAX += 5
+    info.setLife(HealthMAX)
     tiles.setTileAt(location, assets.tile`transparency8`)
 })
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
