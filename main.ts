@@ -1,4 +1,4 @@
-  namespace SpriteKind {
+namespace SpriteKind {
     export const Bomb = SpriteKind.create()
     export const StatusBar = SpriteKind.create()
 }
@@ -169,7 +169,6 @@ function initVars (debug: boolean, inf_jump: boolean) {
     assets.tile`bombableBlock`,
     assets.tile`clawableBlock`,
     assets.tile`invTile`,
-    assets.tile`abBlaster`
     ]
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tempWin`, function (sprite, location) {
@@ -208,6 +207,9 @@ scene.onOverlapTile(SpriteKind.Projectile, assets.tile`alienRopeblock`, function
         sprites.destroy(sprite)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Lava`, function (sprite, location) {
+    info.changeLifeBy(-1)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`objSpeed`, function (sprite, location) {
     music.stopAllSounds()
     music.play(music.stringPlayable("G A G F G B - B ", 200), music.PlaybackMode.UntilDone)
@@ -221,17 +223,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`objClaw`, function (sprite, l
     game.splash("You got the Claw!", "Press B and Up to Launch!")
     claw = true
     tiles.setTileAt(location, assets.tile`transparency8`)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`objHealth`, function (sprite, location) {
-    music.stopAllSounds()
-    music.play(music.stringPlayable("G A G F G B - B ", 200), music.PlaybackMode.UntilDone)
-    game.splash("You got more Health!", "You can take 5 more hits!")
-    HealthMAX += 5
-    info.setLife(HealthMAX)
-    tiles.setTileAt(location, assets.tile`transparency8`)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Lava`, function (sprite, location) {
-    info.changeLifeBy(-1)
 })
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     if (tiles.tileAtLocationEquals(location, assets.tile`breakableBlock`) && sprites.readDataNumber(sprite, "type") == 0) {
@@ -368,9 +359,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
 })
 let mySprite4: Sprite = null
+let gravity = 0
 let enemyTime = 0
 let bomb = false
 let debugMode = false
+let HealthMAX = 0
 let EnemyMAX = 0
 let hard_mode = false
 let EnemyCount = 0
@@ -380,12 +373,10 @@ let inf_jump = false
 let speeedd = 0
 let projectile: Sprite = null
 let blaster = false
-let claw = false
 let mySprite: Sprite = null
 let game22 = false
-let gravity = 0
 let game2 = false
-let HealthMAX = 0
+let claw = false
 game.setDialogCursor(assets.image`icon`)
 game.setDialogTextColor(1)
 game.setDialogFrame(assets.image`emtey`)
@@ -400,7 +391,7 @@ game.onUpdate(function () {
     scene.centerCameraAt(mySprite.x, mySprite.y - 15)
     for (let value2 of sprites.allOfKind(SpriteKind.Enemy)) {
         value2.ay = 150
-        value2.setVelocity((mySprite.x - value2.x) * sprites.readDataNumber(value2, "speed"), value2.ay);
+        value2.setVelocity((mySprite.x - value2.x) * sprites.readDataNumber(value2, "speed"), value2.ay)
         if (Math.abs(mySprite.y - value2.y) > 60 || Math.abs(mySprite.x - value2.x) > 80) {
             sprites.destroy(value2)
             EnemyCount += -1
@@ -414,7 +405,7 @@ game.onUpdate(function () {
         }
     }
     if (tiles.tileAtLocationEquals(mySprite.tilemapLocation(), assets.tile`Ladder`)) {
-        controller.moveSprite(mySprite, speeedd, speeedd*1.5)
+        controller.moveSprite(mySprite, speeedd, speeedd * 1.5)
     } else {
         controller.moveSprite(mySprite, speeedd, 0)
     }
